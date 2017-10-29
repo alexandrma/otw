@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WeChall</title>
+</head><body>weChall username<br/>
+alex0110<br/>
+<br/>
+weChall token<br/>
+9EB7E-4FA2B-C6229-0E317-DE813-1B088<br/>
+<br/>
+~/.bashrc<br/>
+export WECHALLUSER="alex0110" <br/>
+export WECHALLTOKEN="9EB7E-4FA2B-C6229-0E317-DE813-1B088"<br/>
+<br/>
+set -Ux WECHALLUSER "alex0110"<br/>
+echo $WECHALLUSER<br/>
+<br/>
+<br/>
+~/.ssh/config<br/>
+Host *.labs.overthewire.org <br/>
+SendEnv WECHALLTOKEN <br/>
+SendEnv WECHALLUSER &nbsp;</body></html>

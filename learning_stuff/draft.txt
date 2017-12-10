@@ -1,0 +1,14 @@
+/etc/natas_webpass/natas##
+
+
+Python
+How To Code in Python 3 by Lisa Tagliaferri
+https://www.digitalocean.com/community/tutorial_series/how-to-code-in-python-3
+
+Learn X in Y minutes by Louie Dinh
+https://learnxinyminutes.com/
+
+
+MySQL SQL Injection Cheat Sheet
+http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
+

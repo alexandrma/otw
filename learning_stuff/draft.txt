@@ -33,3 +33,10 @@ https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 Standarts
 PTES Technical Guidelines
 http://www.pentest-standard.org/index.php/PTES_Technical_Guidelines
+
+https://www.pcisecuritystandards.org/documents/Penetration-Testing-Guidance-v1_1.pdf
+Open Source Security Testing Methodology Manual (“OSSTMM”)
+The National Institute of Standards and Technology (“NIST”) Special Publication 800-115
+OWASP Testing Guide
+Penetration Testing Execution Standard
+Penetration Testing Framework

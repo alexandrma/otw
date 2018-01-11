@@ -75,3 +75,52 @@ https://www.jimwilbur.com/2017/07/oscp-review/
     mrRobot
     pwnlab_init
 
+
+http://www.abatchy.com/2017/02/oscp-like-vulnhub-vms
+
+Linux
+Beginner friendly
+
+    Kioptrix: Level 1 (#1)
+    Kioptrix: Level 1.1 (#2)
+    Kioptrix: Level 1.2 (#3)
+    Kioptrix: Level 1.3 (#4)
+    FristiLeaks: 1.3
+    Stapler: 1
+    PwnLab: init
+
+Intermediate
+
+    Kioptrix: 2014
+    Brainpan: 1
+    Mr-Robot: 1
+    HackLAB: Vulnix
+
+Not so sure (Didn’t solve them yet)
+
+    VulnOS: 2
+    SickOs: 1.2
+    /dev/random: scream
+    pWnOS: 2.0
+    SkyTower: 1
+    IMF
+
+Windows
+
+There aren’t many Windows machines around due to licensing. Few options:
+
+    Hack The Box: Got a nice set of Windows machines from Windows 2000 up to Windows 8.1 I believe.
+    Metasploitable 3, will download a trial version of Windows Server.
+    https://github.com/magnetikonline/linuxmicrosoftievirtualmachines you can download Windows VMs legally then hack your way through them through an unpatched vulnerability or setting up a vulnerable software.
+    Set up your own lab. Default Windows XP SP0 will give you the chance to try out a few remote exploits, or doing some privilege escalation using weak services.
+    /dev/random: Sleepy (Uses VulnInjector, need to provide you own ISO and key.)
+    Bobby: 1 (Uses VulnInjector, need to provide you own ISO and key.)
+
+
+
+
+
+
+
+
+

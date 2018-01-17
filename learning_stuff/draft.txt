@@ -1,8 +1,8 @@
 /etc/natas_webpass/natas##
 Cool blogs
 https://kongwenbin.wordpress.com/
-
 https://pentestimonials.wordpress.com/
+https://jhalon.github.io/
 
 #many HTB
 https://rgolebiowski.blogspot.com.by/

